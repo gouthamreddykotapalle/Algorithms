@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+#include<vector>
+#define get(a) scanf("%lld",&a)
+#define put(a) printf("%lld",a)
+#define ll long long
+#define pb push_back
+#include<string>
+#define FOR(i,a,b) for(ll i=a;i<b;i++)
+#define BOOST ios_base::sync_with_stdio(false); cin.tie(NULL)
+
+ll max(vector<ll> ,ll,ll);
+
+int main()
+{
+	ll n,i,s,a,t,k,j;//hes going to input it ONLY in the way he has shown where even the space and enter keys are crutial
+	get(t);
+	if(t%10!=0)
+	cout<<1<<endl<<t%10;
+	else
+	cout<<2<<endl;
+}
+
