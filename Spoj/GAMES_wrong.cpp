@@ -8,17 +8,16 @@ using namespace std;
 #define putu(a) printf("%llu\n",a)
 #define ll long long
 #define pb push_back
-#define ull unsigned long long
 #define ppb pop_back
 #include<map>
 #include<stack>
 #define vi vector<ll>::iterator
-#define mi multiset<ll>::iterator
+#define mi multiset<char>::iterator
 #define mapi map<ll,ll>::iterator
 #define seti set<ll>::iterator
 #define pairi pair<ll,ll>::iterator
 #include<queue>
-#define mp(a,b) make_pair(a,b)
+#define mp make_pair
 //#define len length()
 #define sz size()
 #define llu unsigned long long
@@ -44,80 +43,32 @@ ll bfs(char**,ll,ll);
 //complete dfs with adjacency lists
 //its autogtic backtracking
 //just needed a bok for the weighted part of the pt07y
-void connected_components(ll,vector<ll>[]);
-ull f(ll);
-
-
-void seive()
-{
-    memset(prime, true, sizeof(prime));//={0}
-
-    for (ll p=2; p*p<=10000000; p++)
-    {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true)
-        {
-            // Update all multiples of p
-            for (ll i=p*2; i<=10000000; i += p)
-                prime[i] = false;
-        }
-    }
-
-}
-
-bool is_cons_prime(ll a, ll f)
-{
- ll count=0;
-  for(ll i=a+1;i<f;i++)
-  { 
-    if(prime[i])
-    {
-      count++;
-      //cout<<i<<" ";
-	}
-	if(count > 4)
-	{
-	 return false;
-	}
-  }
-  
-  if(count ==4)
-  return true;
-
-}
-
 int main()
-{//code this fully
-ll t,n,i,sum,p,a,b,c,d,e,f;
-seive();
-getl(t);
-while(t--)
 {
-  getl(n);
-  sum=0;
-  getl(a);getl(b);getl(c);getl(d);getl(e);getl(f);
-	  for(i=2;i<n;i++)
-	  {
-	      p=i*i;
-	      if(prime[p+a] && prime[p+b] && prime[p+c] && prime[p+d] && prime[p+e]&&prime[p+f])
-		  if(is_cons_prime(p+a,p+f))
-		  {
-		     sum+=i;
-		  }
-      }
-      putl(sum);
 
+  //O(m);worst case m-> size of word
+  //permutations doesnt give a substring -> substring  -> exact sequence (contiguous) unlike a permuation
+  ll t,p,l,start,i,end,a,j,num,den;
+    float n,f;
+	getl(t);
+    while(t--)
+    {
+    	scanf("%f",&n);
+    	n=n-floor(n);
+       	for(i=1;i<=10000;i++)
+    	{
+    		f=n*i;
+    		printf("%lld %f %f %f %f\n",i,f,ceil(f),floor(f),f/ceil(f));
+    		if((f/ceil(f))==1)
+    		{
+    			putl(i);
+    			break;
+    			
+    		}
+    	}
+    	
+    }
 }
-
-  
-  
-	
-}
-
-
-
-
-
 
 
 

@@ -5,10 +5,13 @@ using namespace std;
 #define putl(a) printf("%lld\n",a)
 #define putd(a) printf("%d\n",a)
 #define getu(a) scanf("%llu",&a)
+#define getui(a) scanf("%u",&a)
+#define putui(a) printf("%u\n",a)
 #define putu(a) printf("%llu\n",a)
 #define ll long long
 #define pb push_back
 #define ull unsigned long long
+#define ui unsigned int
 #define ppb pop_back
 #include<map>
 #include<stack>
@@ -33,7 +36,7 @@ using namespace std;
 #define F first
 #define S second
 #define all(a) a.begin(),a.end()
-
+#define MOD 1000000007
 
 typedef string String;
 typedef long Long;
@@ -45,89 +48,37 @@ ll bfs(char**,ll,ll);
 //its autogtic backtracking
 //just needed a bok for the weighted part of the pt07y
 void connected_components(ll,vector<ll>[]);
-ull f(ll);
-
+ull f(ll);//prototype
+ui arr[100000+5];
 
 void seive()
 {
-    memset(prime, true, sizeof(prime));//={0}
-
-    for (ll p=2; p*p<=10000000; p++)
-    {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true)
-        {
-            // Update all multiples of p
-            for (ll i=p*2; i<=10000000; i += p)
-                prime[i] = false;
-        }
-    }
-
-}
-
-bool is_cons_prime(ll a, ll f)
+	arr[1]=1;//can use << in the place of  *2 or X2
+	ui p1 = 1;
+for(ui i=2;i<=100000;i++)
 {
- ll count=0;
-  for(ll i=a+1;i<f;i++)
-  { 
-    if(prime[i])
-    {
-      count++;
-      //cout<<i<<" ";
-	}
-	if(count > 4)
-	{
-	 return false;
-	}
-  }
-  
-  if(count ==4)
-  return true;
-
+	arr[i]=((arr[i-1]<<1/* *2 */)+p1)%MOD;
+	p1=(p1<<1)%MOD;//learn to use this
+	//cout<<arr[i]<<endl;
 }
-
-int main()
-{//code this fully
-ll t,n,i,sum,p,a,b,c,d,e,f;
-seive();
-getl(t);
-while(t--)
-{
-  getl(n);
-  sum=0;
-  getl(a);getl(b);getl(c);getl(d);getl(e);getl(f);
-	  for(i=2;i<n;i++)
-	  {
-	      p=i*i;
-	      if(prime[p+a] && prime[p+b] && prime[p+c] && prime[p+d] && prime[p+e]&&prime[p+f])
-		  if(is_cons_prime(p+a,p+f))
-		  {
-		     sum+=i;
-		  }
-      }
-      putl(sum);
-
-}
-
-  
-  
+  	
 	
 }
 
 
+int main()
+{//code this fully
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  ui a,b,c,t,n;
+  seive();
+  getui(t);
+  c=t;
+  while(t--)
+  {
+  	getui(n);
+  	printf("Case %u: %u\n",c-t,arr[n]);
+  	
+  	
+  }
+  //ui->3.7 ll 4.1 MB
+}

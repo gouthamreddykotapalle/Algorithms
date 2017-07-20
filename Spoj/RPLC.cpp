@@ -46,70 +46,40 @@ ll bfs(char**,ll,ll);
 //just needed a bok for the weighted part of the pt07y
 void connected_components(ll,vector<ll>[]);
 ull f(ll);
-
-
-void seive()
-{
-    memset(prime, true, sizeof(prime));//={0}
-
-    for (ll p=2; p*p<=10000000; p++)
-    {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true)
-        {
-            // Update all multiples of p
-            for (ll i=p*2; i<=10000000; i += p)
-                prime[i] = false;
-        }
-    }
-
-}
-
-bool is_cons_prime(ll a, ll f)
-{
- ll count=0;
-  for(ll i=a+1;i<f;i++)
-  { 
-    if(prime[i])
-    {
-      count++;
-      //cout<<i<<" ";
-	}
-	if(count > 4)
-	{
-	 return false;
-	}
-  }
-  
-  if(count ==4)
-  return true;
-
-}
-
 int main()
 {//code this fully
-ll t,n,i,sum,p,a,b,c,d,e,f;
-seive();
-getl(t);
-while(t--)
-{
-  getl(n);
-  sum=0;
-  getl(a);getl(b);getl(c);getl(d);getl(e);getl(f);
-	  for(i=2;i<n;i++)
-	  {
-	      p=i*i;
-	      if(prime[p+a] && prime[p+b] && prime[p+c] && prime[p+d] && prime[p+e]&&prime[p+f])
-		  if(is_cons_prime(p+a,p+f))
-		  {
-		     sum+=i;
-		  }
-      }
-      putl(sum);
 
-}
-
-  
+  ll a,i,c,n,t,sum,energy;
+  getl(t);
+  c=t;
+  while(t--)
+  {
+  	getl(n);
+  	sum=0;
+  	energy=0;
+  	for(i=0;i<n;i++)
+  	{
+  		getl(a);
+  		if((sum+a)<=0)
+  		{
+  		
+  			energy+=abs(sum+a)+1;
+  				sum=1;
+  		}
+  		else
+  		{
+  			sum+=a;
+  		}
+  		
+  	}
+  	if(!energy)
+  	printf("Scenario #%lld: %lld\n",c-t,1);
+  	else
+  	printf("Scenario #%lld: %lld\n",c-t,energy);
+  	
+  	
+  	
+  }
   
 	
 }
